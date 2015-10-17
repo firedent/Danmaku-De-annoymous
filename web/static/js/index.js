@@ -154,7 +154,11 @@ bind("#frm-searchcm","submit",function(e){
 });
 
 function cm_tmpl(xmlnode){
-  var text = xmlnode.childNodes[0].nodeValue;
+  var text = xmlnode.childNodes[0].nodeValue.replace(/"/g, "&quot;");
+  var shorttext = text;
+  if(text.length > 20){
+    shorttext = text.substr(0, 20);
+  }
   var pdata = xmlnode.getAttribute('p').split(',');
   var time = parseInt(pdata[0]);
   var user = pdata[6];
@@ -162,7 +166,7 @@ function cm_tmpl(xmlnode){
   var minutes = parseInt( time / 60 ) % 60;
   var seconds = time % 60;
 
-  var str = '<tr><td class="mdl-data-table__cell--non-numeric">' + text + '</td><td>' + minutes + ':' + seconds + '</td>\
+  var str = '<tr><td class="mdl-data-table__cell--non-numeric" title="' + text + '">' + shorttext + '</td><td>' + minutes + ':' + seconds + '</td>\
                  <td><a id="cmid_' + user + '" href="javascript:;" class="cm-view-btn" onclick="getUser(\''+ user +'\')">爆</a></td></tr>';
   return str;
 }
@@ -185,7 +189,11 @@ function getUser(user){
           el[i].onclick = function(){};
           el[i].setAttribute('target', '_blank');
           el[i].href = 'http://space.bilibili.com/' + uid;
-          el[i].innerHTML = 'http://space.bilibili.com/' + uid;
+          if(document.body.offsetWidth < 600){
+            el[i].innerHTML = '进入';
+          }else{
+            el[i].innerHTML = 'http://space.bilibili.com/' + uid;
+          }
         }
 
       }else{

@@ -4,10 +4,10 @@
   font-weight: 400;
   src: url(//cdn.bootcss.com/material-design-icons/2.0.0/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
   src: local('Material Icons'),
-       local('MaterialIcons-Regular'),
-       url(//cdn.bootcss.com/material-design-icons/2.0.0/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
-       url(//cdn.bootcss.com/material-design-icons/2.0.0/iconfont/MaterialIcons-Regular.woff) format('woff'),
-       url(//cdn.bootcss.com/material-design-icons/2.0.0/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+     local('MaterialIcons-Regular'),
+     url(//cdn.bootcss.com/material-design-icons/2.0.0/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+     url(//cdn.bootcss.com/material-design-icons/2.0.0/iconfont/MaterialIcons-Regular.woff) format('woff'),
+     url(//cdn.bootcss.com/material-design-icons/2.0.0/iconfont/MaterialIcons-Regular.ttf) format('truetype');
 }
 
 .material-icons {
@@ -36,27 +36,42 @@
 }
 
 body{
-    background-color: #f5f5f5 !important;
-    text-shadow: none;
-    height: 100%;
-    margin: 0;
-    box-sizing: border-box;
+  background-color: #f5f5f5 !important;
+  text-shadow: none;
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 a {
-    color: rgb(62,82,183);
+  color: rgb(62,82,183);
 }
 
+#step3 .mdl-data-table{
+  white-space: normal;
+  word-break: break-all;
+}
+#step3 thead{
+  white-space: nowrap;
+}
+#step3 td{
+  width: 30%;
+  overflow: hidden;
+}
+#step3 .mdl-data-table__cell--non-numeric{
+  width: 40%;
+  overflow: hidden;
+}
 .mdl-card {
-    margin:10px 10px;
+  margin:10px 10px;
 }
  
 .mdl-layout__header-row .mdl-layout-title{
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .mdl-layout__drawer-button .material-icons{
-    line-height: 42px;
+  line-height: 42px;
 }
 
 .mdl-layout__tab-bar-button{
