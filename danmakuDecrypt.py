@@ -42,7 +42,7 @@ def GetBilibiliUrl(url, findstr):
         timemin = int((int(timesec) - timesecaf) / 60)
         accu = urlfetch('http://www.fuckbilibili.com/test/get.php?id='+chat.attributes["p"].value.split(',')[6].lower())
         mid = str(accu, encoding = "utf-8").split('   ')[0]
-        if mid == 'Not Find!':
+        if mid == 'Not Found!':
             print(mid)
             continue
         name = dict(json.loads(urlfetch('http://api.bilibili.cn/userinfo?mid='+mid).decode('utf-8', 'replace'))).get('name')
