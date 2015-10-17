@@ -1,0 +1,100 @@
+<!-- @import "include.kit" -->
+<!-- $title:首页-->
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title><!--$siteTitle--></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" href="//cdn.bootcss.com/material-design-lite/1.0.4/material.min.css?v=<!--$version-->">
+  <link rel="stylesheet" href="<!--$cdnBase-->/css/styles.css?v=<!--$version-->">
+</head>
+<body>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+  <!-- @import "navi.kit" -->
+
+  <main class="mdl-layout__content">
+    <div class="mdl-layout__tab-panel is-active" id="comment-to-user">
+      <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+      <div class="mdl-card mdl-cell mdl-cell--12-col">
+        <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+        <h4 class="mdl-cell mdl-cell--12-col">弹幕内容查用户名</h4>
+        <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+          <div class="section__circle-container__circle mdl-color--primary"></div>
+        </div>
+
+        <div id="step1" class="section__text mdl-cell mdl-cell--12-col">
+          <h5>第一步：输入视频地址</h5>
+          <form id="frm-vurl" action="#">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <input class="mdl-textfield__input" type="text" id="vurl" />
+              <label class="mdl-textfield__label" for="vurl">视频地址</label>
+            </div>
+            <p>
+              <button id="getComment" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                读取弹幕
+              </button>
+            </p>
+          </form>
+        </div>
+
+        <div id="step2" class="section__text mdl-cell mdl-cell--12-col" style="display:none">
+          <h5>第二步：查找弹幕</h5>
+          <form id="frm-searchcm" action="#">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="cmsearch" />
+            <label class="mdl-textfield__label" for="cmsearch">关键词</label>
+            </div>
+            <p>
+              <button id="searchComment" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                 搜索
+              </button>
+            </p>
+          </form>
+        </div>
+
+        <div id="step3" class="section__text mdl-cell mdl-cell--12-col" style="display:none">
+          <h5>第三步：爆菊花</h5>
+          <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell--12-col">
+            <thead>
+              <tr>
+                <th class="mdl-data-table__cell--non-numeric">弹幕内容</th>
+                <th>出现时间</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="cmList">
+
+            </tbody>
+          </table>
+        </div>
+        <div id="loader" class="mdl-spinner mdl-js-spinner is-active" style="display:none;"></div>
+        </div>
+      </div>
+      </section>
+    </div>
+
+    <div class="mdl-layout__tab-panel" id="faq">
+      <section class="section--center mdl-grid mdl-grid--no-spacing">
+      <div class="mdl-cell mdl-cell--12-col">
+        <h4>常见问题</h4>
+        <p>暂未完成，遇到问题可以邮件联系 typcncom@gmail.com</p>
+      </div>
+      </section>
+    </div>
+
+    <div class="mdl-layout__tab-panel" id="about">
+      <section class="section--center mdl-grid mdl-grid--no-spacing">
+      <div class="mdl-cell mdl-cell--12-col">
+        <h4>关于</h4>
+        <p>暂未完成</p>
+      </div>
+      </section>
+    </div>
+    </main>
+</div>
+<!-- @import "js.kit" -->
+</body>
+</html>
