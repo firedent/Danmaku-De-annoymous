@@ -163,11 +163,21 @@ function cm_tmpl(xmlnode){
   var time = parseInt(pdata[0]);
   var user = pdata[6];
 
-  var minutes = parseInt( time / 60 ) % 60;
+  var minutes = parseInt( time / 60 );
+  var minutesa = minutes.toString();
+  minuteslength = minutesa.length;
+  if (minuteslength <= 1) {
+    minutesa = '0' + minutesa;
+  }
   var seconds = time % 60;
+  var secondsa = seconds.toString();
+  secondslength = secondsa.length;
+  if (secondslength <= 1) {
+    secondsa = '0' + secondsa;
+  }
 
-  var str = '<tr><td class="mdl-data-table__cell--non-numeric" title="' + text + '">' + shorttext + '</td><td>' + minutes + ':' + seconds + '</td>\
-                 <td><a id="cmid_' + user + '" href="javascript:;" class="cm-view-btn" onclick="getUser(\''+ user +'\')">爆</a></td></tr>';
+  var str = '<tr><td class="mdl-data-table__cell--non-numeric" title="' + text + '">' + shorttext + '</td><td>' + minutesa + ':' + secondsa + '</td>\
+                 <td><a id="cmid_' + user + '" href="javascript:;" class="cm-view-btn" onclick="getUser(\''+ user +'\')">爆菊花</a></td></tr>';
   return str;
 }
 
@@ -185,19 +195,25 @@ function getUser(user){
       var data = JSON.parse(request.responseText);
       if(data.error == 0){
         var uid = data.data[0].id;
-        for(var i = 0;i < el.length;i++){
-          el[i].onclick = function(){};
-          el[i].setAttribute('target', '_blank');
-          el[i].href = 'http://space.bilibili.com/' + uid;
-          if(document.body.offsetWidth < 600){
-            el[i].innerHTML = '进入';
-          }else{
-            el[i].innerHTML = 'http://space.bilibili.com/' + uid;
+
+        window['displayName_' + uid] = function(names){
+            var name = names.name;
+            for(var i = 0;i < el.length;i++){
+              el[i].onclick = function(){};
+              el[i].setAttribute('target', '_blank');
+              el[i].href = 'http://space.bilibili.com/' + uid;
+              el[i].innerHTML = name;
           }
         }
 
+        var script = document.createElement('script');
+        script.setAttribute('type','text/javascript');
+        script.setAttribute('charset','utf-8');
+        script.setAttribute('src','http://api.bilibili.cn/userinfo?mid=' + uid +'&type=jsonp&callback=displayName_' + uid);
+        document.body.appendChild(script);
+
       }else{
-        alert("用户不存在，这条弹幕是非会员弹幕，也可能是此用户被 bishi 删了");
+        alert("用户不存在，这条弹幕是非会员弹幕，也可能是此用户被徐特首删了");
         for(var i = 0;i < el.length;i++){
           el[i].innerHTML = '用户不存在';
         }
