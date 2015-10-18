@@ -11,7 +11,6 @@ import urllib.request
 import xml.dom.minidom as minidom
 import zlib
 import random
-import os
 
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.99 Safari/537.36'
 APPKEY = '85eb6835b0a1034e'
@@ -40,13 +39,22 @@ def GetBilibiliUrl(url, findstr):
         timesec = float(chat.attributes["p"].value.split(',')[0])
         timesecaf = int(timesec) % 60
         timemin = int((int(timesec) - timesecaf) / 60)
-        accu = urlfetch('http://www.fuckbilibili.com/test/get.php?id='+chat.attributes["p"].value.split(',')[6].lower())
-        mid = str(accu, encoding = "utf-8").split('   ')[0]
-        if mid == 'Not Found!':
-            print(mid)
+        if len(str(timesecaf)) < 2:
+            timesecaf = "0" + str(timesecaf)
+        if len(str(timemin)) < 2:
+            timemin = "0" + str(timemin)
+        gethash = urlfetch('http://biliquery.typcn.com/api/user/hash/'+chat.attributes["p"].value.split(',')[6].lower())
+        accu = dict(json.loads(gethash.decode('utf-8', 'replace')))
+        iserror = accu.get('error')
+        if iserror != 1:
+            mid = accu.get('data')
+            mid = mid[0]
+            mid = mid.get('id')
+        else:
+            print('Not Found!')
             continue
-        name = dict(json.loads(urlfetch('http://api.bilibili.cn/userinfo?mid='+mid).decode('utf-8', 'replace'))).get('name')
-        print(name+'  '+mid+'  '+dialogue+'  '+str(timemin)+':'+str(timesecaf))
+        name = dict(json.loads(urlfetch('http://api.bilibili.com/userinfo?mid='+str(mid)).decode('utf-8', 'replace'))).get('name')
+        print(name+'  '+str(mid)+'  '+dialogue+'  '+str(timemin)+':'+str(timesecaf))
     return
     
 def GetSign(params,appkey,AppSecret=None):
