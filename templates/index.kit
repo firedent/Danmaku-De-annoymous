@@ -31,30 +31,30 @@
           <div class="section__circle-container__circle mdl-color--primary"></div>
         </div>
 
-        <div id="step1" class="section__text mdl-cell mdl-cell--12-col">
+        <div id="step1.1" class="section__text mdl-cell mdl-cell--12-col">
           <h5>第一步：输入视频地址</h5>
-          <form id="frm-vurl" action="#">
+          <form id="frm-vurl1" action="#">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="vurl" />
-              <label class="mdl-textfield__label" for="vurl">视频地址</label>
+              <input class="mdl-textfield__input" type="text" id="vurl1" />
+              <label class="mdl-textfield__label" for="vurl1">视频地址</label>
             </div>
             <p>
-              <button id="getComment" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+              <button id="getComment1" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
                 读取弹幕
               </button>
             </p>
           </form>
         </div>
 
-        <div id="step2" class="section__text mdl-cell mdl-cell--12-col" style="display:none">
+        <div id="step1.2" class="section__text mdl-cell mdl-cell--12-col" style="display:none">
           <h5>第二步：查找弹幕</h5>
-          <form id="frm-searchcm" action="#">
+          <form id="frm-searchcm1" action="#">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="cmsearch" />
-            <label class="mdl-textfield__label" for="cmsearch">关键词</label>
+            <input class="mdl-textfield__input" type="text" id="cmsearch1" />
+            <label class="mdl-textfield__label" for="cmsearch1">关键词</label>
             </div>
             <p>
-              <button id="searchComment" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+              <button id="searchComment1" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
                  搜索
               </button>
               越精准的弹幕越容易查询（推荐右键复制粘贴）
@@ -62,7 +62,7 @@
           </form>
         </div>
 
-        <div id="step3" class="section__text mdl-cell mdl-cell--12-col" style="display:none">
+        <div id="step1.3" class="section__text mdl-cell mdl-cell--12-col" style="display:none">
           <h5>第三步：运 营 爆 破</h5>
           <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell--12-col">
             <thead>
@@ -72,18 +72,18 @@
                 <th>用户</th>
               </tr>
             </thead>
-            <tbody id="cmList">
+            <tbody id="cmList1">
 
             </tbody>
           </table>
         </div>
-        <div id="loader" class="mdl-spinner mdl-js-spinner is-active" style="display:none;"></div>
+        <div id="loader1" class="mdl-spinner mdl-js-spinner is-active" style="display:none;"></div>
         </div>
       </div>
       </section>
     </div>
 
-<!--    <div class="mdl-layout__tab-panel" id="user-to-comment">
+    <div class="mdl-layout__tab-panel" id="user-to-comment">
       <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
       <div class="mdl-card mdl-cell mdl-cell--12-col">
         <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
@@ -91,39 +91,39 @@
         <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
           <div class="section__circle-container__circle mdl-color--primary"></div>
         </div>
-        <div id="step1" class="section__text mdl-cell mdl-cell--12-col">
+        <div id="step2.1" class="section__text mdl-cell mdl-cell--12-col">
           <h5>第一步：输入视频地址</h5>
-          <form id="frm-vurl" action="#">
+          <form id="frm-vurl2" action="#">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="vurl" />
-              <label class="mdl-textfield__label" for="vurl">视频地址</label>
+              <input class="mdl-textfield__input" type="text" id="vurl2" />
+              <label class="mdl-textfield__label" for="vurl2">视频地址</label>
             </div>
             <p>
-              <button id="getComment" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+              <button id="getComment2" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
                 读取弹幕
               </button>
             </p>
           </form>
         </div>
 
-        <div id="step2" class="section__text mdl-cell mdl-cell--12-col" style="display:none">
+        <div id="step2.2" class="section__text mdl-cell mdl-cell--12-col" style="display:none">
           <h5>第二步：查找用户</h5>
-          <form id="frm-searchcm" action="#">
+          <form id="frm-searchus" action="#">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="cmsearch" />
-            <label class="mdl-textfield__label" for="cmsearch">关键词</label>
+            <input class="mdl-textfield__input" type="text" id="ussearch" />
+            <label class="mdl-textfield__label" for="ussearch">用户名</label>
             </div>
             <p>
               <button id="searchUser" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
-                用户名
+                开始查找
               </button>
               仅支持全字匹配
             </p>
           </form>
         </div>
 
-        <div id="step3" class="section__text mdl-cell mdl-cell--12-col" style="display:none">
-          <h5>第三步：反向搜索</h5>
+        <div id="step2.3" class="section__text mdl-cell mdl-cell--12-col" style="display:none">
+          <h5>第三步：抱大腿</h5>
           <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell--12-col">
             <thead>
               <tr>
@@ -131,16 +131,16 @@
                 <th>出现时间</th>
               </tr>
             </thead>
-            <tbody id="cmList">
-
+            <tbody id="cmList2">
+              
             </tbody>
           </table>
         </div>
-        <div id="loader" class="mdl-spinner mdl-js-spinner is-active" style="display:none;"></div>
+        <div id="loader2" class="mdl-spinner mdl-js-spinner is-active" style="display:none;"></div>
         </div>
       </div>
       </section>
-    </div> -->
+    </div>
 
     </main>
 </div>
