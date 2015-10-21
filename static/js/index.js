@@ -324,57 +324,42 @@ bind("#frm-searchus","submit",function(e){
 
   var request1 = new XMLHttpRequest();
   var html1 = '';
-
-  window['aaaaaaa'] = function(names2){
-      var errorcode = names2.code;
-      if (errorcode == -500) {
+  request1.open('GET', apiBase + 'userid/' + user, true);
+  request1.onload = function() {
+    if (request1.status >= 200 && request1.status < 400) {
+      var data = JSON.parse(request1.responseText);
+      if(data.error != 0){
         $("#ussearch").value = "未找到此用户";
         hide('loader2');
         enable("searchUser");
-        return ;
+        return false;
       }
-      var mid = names2.mid;
-      var request1 = new XMLHttpRequest();
-      var html1 = '';
-      request1.open('GET', apiBase + 'user/id/' + mid, true);
-      request1.onload = function() {
-        if (request1.status >= 200 && request1.status < 400) {
-          var data = JSON.parse(request1.responseText);
-          var crc = data.data[0].crc;
-          for(var i = 0 ; i < commentElements2.length; i++){
-            var n = commentElements2[i].getAttribute('p').split(',')[6];
-            console.warn(n.indexOf(crc));
-            if(n && n.indexOf(crc) > -1){
-              console.warn('entered1');
-              html1 += cm_tmpl2(commentElements2[i])
-            }
-          }
-          if(!html1 || html1.length < 1){
-            html1 = '<tr><td>没有找到任何弹幕，请尝试变更用户</td></tr>';
-          }
-          $('#cmList2').innerHTML = html1;
-        } else {
-          alert("读取用户失败，服务器错误");
+      var mid = data.uid;
+      var crc = data.crc;
+      for(var i = 0 ; i < commentElements2.length; i++){
+        var n = commentElements2[i].getAttribute('p').split(',')[6];
+        if(n && n.indexOf(crc) > -1){
+          html1 += cm_tmpl2(commentElements2[i])
         }
-      };
-
-      request1.onerror = function() {
-        alert("读取用户失败，网络错误");
-      };
-
-      request1.send();
-
-      enable("searchUser");
-      hide('loader2');
-      show('step2.3');
-      return ;
+      }
+      if(!html1 || html1.length < 1){
+        html1 = '<tr><td>没有找到任何弹幕，请尝试变更用户</td></tr>';
+      }
+      $('#cmList2').innerHTML = html1;
+    } else {
+      alert("读取用户失败，服务器错误");
+    }
   };
 
-  var script = document.createElement('script');
-  script.setAttribute('type','text/javascript');
-  script.setAttribute('charset','utf-8');
-  script.setAttribute('src','http://api.bilibili.cn/userinfo?user=' + user +'&type=jsonp&callback=aaaaaaa');
-  document.body.appendChild(script);
+  request1.onerror = function() {
+    alert("读取用户失败，网络错误");
+  };
+
+  request1.send();
+
+  enable("searchUser");
+  hide('loader2');
+  show('step2.3');
 
   return false;
 });
