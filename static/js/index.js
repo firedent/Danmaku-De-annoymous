@@ -69,17 +69,17 @@ bind("#frm-vurl","submit",function(e){
         window.lastCID = data.cid;
         getComment(data.cid);
       }else{
-        $("#vurl").value = "请求错误，请一会再试或联系管理员";
+        $("#vurl").value = "请求错误";
       }
     } else {
-      $("#vurl").value = "服务器错误，请尝试刷新或联系管理员";
+      $("#vurl").value = "服务器错误";
     }
   };
 
   request.onerror = function() {
     enable("getComment");
     hide('loader');
-    $("#vurl").value = "服务器错误，请尝试刷新或联系管理员";
+    $("#vurl").value = "服务器错误";
   };
 
   request.send();
@@ -104,14 +104,14 @@ function getComment(cid){
       show('step2');
     } else {
       enable("getComment");
-      $("#vurl").value = "读取弹幕失败，重试或联系管理员";
+      $("#vurl").value = "读取弹幕失败";
     }
   };
 
   request.onerror = function() {
     enable("getComment");
     hide('loader');
-    $("#vurl").value = "读取弹幕失败，重试或联系管理员";
+    $("#vurl").value = "读取弹幕失败";
   };
 
   request.send();
@@ -253,14 +253,14 @@ function getComment2(cid){
       show('step2.2');
     } else {
       enable("getComment2");
-      $("#vurl1").value = "读取弹幕失败，重试或联系管理员";
+      $("#vurl1").value = "读取弹幕失败";
     }
   };
 
   request.onerror = function() {
     enable("getComment2");
     hide('loader2');
-    $("#vurl1").value = "读取弹幕失败，重试或联系管理员";
+    $("#vurl1").value = "读取弹幕失败";
   };
 
   request.send();
@@ -293,17 +293,17 @@ bind("#frm-vurl2","submit",function(e){
       if(data.error == 0){
         getComment2(data.cid);
       }else{
-        $("#vurl2").value = "请求错误，请一会再试或联系管理员";
+        $("#vurl2").value = "请求错误";
       }
     } else {
-      $("#vurl2").value = "服务器错误，请尝试刷新或联系管理员";
+      $("#vurl2").value = "服务器错误";
     }
   };
 
   request.onerror = function() {
     enable("getComment2");
     hide('loader2');
-    $("#vurl2").value = "服务器错误，请尝试刷新或联系管理员";
+    $("#vurl2").value = "服务器错误";
   };
 
   request.send();
