@@ -1,5 +1,7 @@
 pages:
   stage: deploy
+  before_script: 
+  - 'git push --force --mirror git@github.com:FuckBilibili/Danmaku-De-annoymous.git'
   script:
   - mkdir -p /var/www/site/danmu
   - git --work-tree=/var/www/site/danmu checkout -f
