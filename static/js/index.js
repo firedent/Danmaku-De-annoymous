@@ -209,7 +209,7 @@ function getUser(user){
         var script = document.createElement('script');
         script.setAttribute('type','text/javascript');
         script.setAttribute('charset','utf-8');
-        script.setAttribute('src','http://api.bilibili.cn/userinfo?mid=' + uid +'&type=jsonp&callback=displayName_' + uid);
+        script.setAttribute('src','https://api.bilibili.com/userinfo?mid=' + uid +'&type=jsonp&callback=displayName_' + uid);
         document.body.appendChild(script);
 
       }else{
