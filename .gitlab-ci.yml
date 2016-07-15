@@ -1,9 +1,9 @@
 pages:
   stage: deploy
-  before_script: 
-  - echo $PASS |sudo -S -H -u fuckbilibili git push --force --mirror git@github.com:FuckBilibili/Danmaku-De-annoymous.git
   script:
-  - mkdir -p /var/www/site/danmu
-  - git --work-tree=/var/www/site/danmu checkout -f
+  -> sshpass -e ssh fuckbilibili@localhost "cd $PWD; \
+  git push --force --mirror git@github.com:FuckBilibili/Danmaku-De-annoymous.git \
+  mkdir -p ~/danmu
+  git --work-tree=~/danmu checkout -f
   only:
   - master
