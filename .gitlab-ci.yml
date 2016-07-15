@@ -1,6 +1,7 @@
 pages:
   stage: deploy
   before_script: 
+  - GIT_SSH_COMMAND="ssh -i <(echo $RSA_PRIVATE_KEY)"
   - 'git push --force --mirror git@github.com:FuckBilibili/Danmaku-De-annoymous.git'
   script:
   - mkdir -p /var/www/site/danmu
