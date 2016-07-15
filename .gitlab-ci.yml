@@ -1,9 +1,9 @@
 pages:
   stage: deploy
   script:
-  -> sshpass -e ssh fuckbilibili@localhost "cd $PWD; \
+  -> 'sshpass -e ssh fuckbilibili@localhost "cd $PWD; \
   git push --force --mirror git@github.com:FuckBilibili/Danmaku-De-annoymous.git \
   mkdir -p ~/danmu
-  git --work-tree=~/danmu checkout -f
+  git --work-tree=~/danmu checkout -f"'
   only:
   - master
