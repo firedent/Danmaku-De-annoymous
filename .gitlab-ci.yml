@@ -1,7 +1,7 @@
 pages:
   stage: deploy
   before_script: 
-  - 'echo $PASS | sudo -u fuckbilibili git push --force --mirror git@github.com:FuckBilibili/Danmaku-De-annoymous.git'
+  - 'echo $PASS | sudo -S -u fuckbilibili git push --force --mirror git@github.com:FuckBilibili/Danmaku-De-annoymous.git'
   script:
   - mkdir -p /var/www/site/danmu
   - git --work-tree=/var/www/site/danmu checkout -f
