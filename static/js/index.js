@@ -89,7 +89,7 @@ bind("#frm-vurl","submit",function(e){
 
 function getComment(cid){
   var request = new XMLHttpRequest();
-  request.open('GET', 'http://comment.bilibili.com/' + cid + '.xml', true);
+  request.open('GET', 'https://danmu.fuckbilibili.com/' + cid + '.xml', true);
 
   show('loader');
   disable("getComment");
@@ -238,7 +238,7 @@ function getUser(user){
 
 function getComment2(cid){
   var request = new XMLHttpRequest();
-  request.open('GET', 'http://comment.bilibili.com/' + cid + '.xml', true);
+  request.open('GET', 'https://danmu.fuckbilibili.com/' + cid + '.xml', true);
 
   show('loader2');
   disable("getComment2");
