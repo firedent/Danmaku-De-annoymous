@@ -3,6 +3,5 @@ pages:
   script:
   - mkdir -p /var/www/site/danmu
   - git --work-tree=/var/www/site/danmu checkout -f
-  - sshpass -p $SSHPASS ssh fuckbilibili@localhost "cd $PWD; git push --force --mirror git@github.com:FuckBilibili/Danmaku-De-annoymous.git"
   only:
   - master
