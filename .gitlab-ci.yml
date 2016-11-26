@@ -2,6 +2,7 @@ pages:
   stage: deploy
   script:
   - mkdir -p /var/www/site/danmu
+  - rm -rf /var/www/site/danmu/*
   - git --work-tree=/var/www/site/danmu checkout -f
   only:
   - master
