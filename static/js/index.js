@@ -133,12 +133,26 @@ bind("#frm-searchcm", "submit", function(e) {
     show('loader');
 
     var html = '';
+    var userList = [];
     for (var i = 0; i < commentElements.length; i++) {
         var n = commentElements[i].childNodes[0];
         if (n) {
             var t = n.nodeValue;
             if (t && t.indexOf(keyword) > -1) {
-                html += cm_tmpl(commentElements[i])
+                var un = conunt(commentElements[i], userList)
+                switch (un.num) {
+                    case 2:
+                        html += cm_tmpl(commentElements[i]);
+                        html += cm_tmpl(un.xmlnode);
+                        break;
+                    case 1:
+                        break;
+                    default:
+                        html += cm_tmpl(commentElements[i]);
+                }
+                // if(conunt(commentElements[i],userList)>=2){
+                //   html += cm_tmpl(commentElements[i]);
+                // }
             }
         }
     }
@@ -155,6 +169,44 @@ bind("#frm-searchcm", "submit", function(e) {
 
     return false;
 });
+
+function contains(xmlnode, userList) {
+    var pdata = xmlnode.getAttribute('p').split(',');
+    var user = pdata[6];
+    if (userList.length == 0) {
+        userList.push(user);
+        return false;
+    } else {
+        for (var i = 0; i < userList.length; i++) {
+            if (userList[i] == user) {
+                return true;
+            }
+        }
+        userList.push(user);
+        return false;
+    }
+}
+
+function conunt(xmlnode, userList) {
+    var pdata = xmlnode.getAttribute('p').split(',');
+    var user = pdata[6];
+    var userNode = { 'num': 0, 'u': user, 'xmlnode': xmlnode };
+    if (userList.length == 0) {
+        userNode.num = 1;
+        userList.push(userNode);
+        return userNode;
+    } else {
+        for (var i = 0; i < userList.length; i++) {
+            if (userList[i].u == user) {
+                userList[i].num++;
+                return userList[i];
+            }
+        }
+        userNode.num = 1;
+        userList.push(userNode);
+        return userNode;
+    }
+}
 
 function cm_tmpl(xmlnode) {
     var text = xmlnode.childNodes[0].nodeValue.replace(/"/g, "&quot;");
