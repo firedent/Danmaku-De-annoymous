@@ -8,8 +8,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="canonical" href="https://danmu.fuckbilibili.com/" />
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/static/css/material.min.css?v=2.0.2">
-    <link rel="stylesheet" href="/static/css/styles.css?v=2.0.2">
+    <link rel="stylesheet" href="/static/css/material.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
     <!-- Piwik -->
     <script type="text/javascript">
     var _paq = _paq || [];
@@ -66,7 +66,7 @@
             <div class="mdl-layout--large-screen-only mdl-layout__header-row">
             </div>
             <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-                <a href="#comment-to-user" class="mdl-layout__tab is-active">查询刷屏用户</a>
+                <a href="#comment-to-user" class="mdl-layout__tab is-active">查找某些刷屏的SB</a>
                 <a href="#user-to-comment" class="mdl-layout__tab">用户逆向查弹幕</a>
             </div>
         </header>
@@ -111,6 +111,17 @@
                             </div>
                             <div id="step3" class="section__text mdl-cell mdl-cell--12-col" style="display:none">
                                 <h5>第三步：爆菊花</h5>
+                                <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell--12-col">
+                                    <thead>
+                                        <tr>
+                                            <th class="mdl-data-table__cell--non-numeric">出现弹幕总数</th>
+                                            <th>刷屏弹幕数</th>
+                                            <th>刷屏欠操傻逼数</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="count">
+                                    </tbody>
+                                </table>
                                 <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell--12-col">
                                     <thead>
                                         <tr>
@@ -196,8 +207,8 @@
     var cdnBase = "/static";
     var apiBase = "//biliquery.typcn.com/api/";
     </script>
-    <script src="/static/js/index.js?v=2.0.2"></script>
-    <script src="//cdn.bootcss.com/material-design-lite/1.0.4/material.min.js"></script>
+    <script src="/static/js/index.js"></script>
+    <script src="http://cdn.bootcss.com/material-design-lite/1.0.4/material.min.js"></script>
 </body>
 
 </html>

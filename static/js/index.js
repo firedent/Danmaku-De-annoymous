@@ -133,22 +133,27 @@ bind("#frm-searchcm", "submit", function(e) {
     show('loader');
 
     var html = '';
+    var zongshu = shuaping = renshu = 0;
     var userList = [];
     for (var i = 0; i < commentElements.length; i++) {
         var n = commentElements[i].childNodes[0];
         if (n) {
             var t = n.nodeValue;
             if (t && t.indexOf(keyword) > -1) {
+                zongshu++; //匹配弹幕数+1
                 var un = conunt(commentElements[i], userList)
                 switch (un.num) {
                     case 2:
                         html += cm_tmpl(commentElements[i]);
                         html += cm_tmpl(un.xmlnode);
+                        shuaping = shuaping + 2;
+                        renshu++;
                         break;
                     case 1:
                         break;
                     default:
                         html += cm_tmpl(commentElements[i]);
+                        shuaping++;
                 }
                 // if(conunt(commentElements[i],userList)>=2){
                 //   html += cm_tmpl(commentElements[i]);
@@ -156,17 +161,16 @@ bind("#frm-searchcm", "submit", function(e) {
             }
         }
     }
-
+    var countHtml = '<tr><td class="mdl-data-table__cell--non-numeric" title="与关键词匹配的弹幕总数">' + zongshu + '</td><td>' + shuaping + '</td><td>'+ renshu +'</td></tr>';
     if (!html || html.length < 1) {
         html = '<tr><td>没有找到任何弹幕，请尝试变更关键词</td></tr>';
     }
 
     $('#cmList').innerHTML = html;
-
+    $('#count').innerHTML = countHtml;
     enable("searchComment");
     hide('loader');
     show('step3');
-
     return false;
 });
 
@@ -207,6 +211,7 @@ function conunt(xmlnode, userList) {
         return userNode;
     }
 }
+
 
 function cm_tmpl(xmlnode) {
     var text = xmlnode.childNodes[0].nodeValue.replace(/"/g, "&quot;");
