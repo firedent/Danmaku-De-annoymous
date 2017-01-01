@@ -1,6 +1,8 @@
 # Danmaku-De-annoymous
 A simple webpage to dig out some Keyboard Man
-
+##说明
+是不是已经厌烦了满屏一样的弹幕，让我们来看一看到底是哪些人总是再刷同一条弹幕。筛选发同一条弹幕两条以上的用户，只发一遍的不会显示。
+Dev分支为本人小幅修改后的代码，Master为原版代码，原版链接：<https://gitlab.com/FuckBilibili/Danmaku-De-annoymous>
 ## Fancy, but how does it works?
 Let me try to put this in human language.
 
