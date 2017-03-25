@@ -1,13 +1,5 @@
-# This file is a template, and might need editing before it works on your project.
-# Full project: https://gitlab.com/pages/jekyll
-image: ruby:2.3
-pages:
-  stage: deploy
+jekyll:
   script:
-  - gem install jekyll
-  - jekyll build -d public
-  artifacts:
-    paths:
-    - public
+  - jekyll build --destination /home/gitlab-runner/danmu.fuckbilibili.com --incremental
   only:
   - master
