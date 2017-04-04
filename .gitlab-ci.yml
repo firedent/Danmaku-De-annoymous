@@ -1,8 +1,5 @@
-pages:
-  stage: deploy
+jekyll:
   script:
-  - mkdir -p /var/www/site/danmu
-  - rm -rf /var/www/site/danmu/*
-  - git --work-tree=/var/www/site/danmu checkout -f
+  - jekyll build --destination /home/gitlab-runner/danmu.fuckbilibili.com --incremental
   only:
   - master

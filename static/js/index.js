@@ -91,8 +91,8 @@ bind("#frm-vurl", "submit", function(e) {
 
 
 function getComment(cid) {
-    var request = new XMLHttpRequest();
-    request.open('GET', 'https://danmu.fuckbilibili.com/' + cid + '.xml', true);
+  var request = new XMLHttpRequest();
+  request.open('GET', 'https://comment.bilibili.com/' + cid + '.xml', true);
 
     show('loader');
     disable("getComment");
@@ -299,11 +299,25 @@ function getUser(user) {
 }
 
 function getComment2(cid) {
-    var request = new XMLHttpRequest();
-    request.open('GET', 'https://danmu.fuckbilibili.com/' + cid + '.xml', true);
+  var request = new XMLHttpRequest();
+  request.open('GET', 'https://comment.bilibili.com/' + cid + '.xml', true);
 
-    show('loader2');
-    disable("getComment2");
+  show('loader2');
+  disable("getComment2");
+
+  request.onload = function() {
+    hide('loader2');
+    if (request.status >= 200 && request.status < 400) {
+      disable('vurl2');
+      var oParser = new DOMParser();
+      var oDOM = oParser.parseFromString(request.responseText, "text/xml");
+      window.commentElements2 = oDOM.getElementsByTagName("d");
+      show('step2.2');
+    } else {
+      enable("getComment2");
+      $("#vurl1").value = "读取弹幕失败";
+    }
+  };
 
     request.onload = function() {
         hide('loader2');
