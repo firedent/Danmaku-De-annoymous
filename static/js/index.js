@@ -249,12 +249,12 @@ function getUser(user) {
     }
 
     var request = new XMLHttpRequest();
-    request.open('GET', '//api.fuckbilibili.com/uidhash.php?hash=' + user, true);
+    request.open('GET', apiBase+'user/hash/' + user, true);
 
     request.onload = function() {
         if (request.status >= 200 && request.status < 400) {
             var data = JSON.parse(request.responseText);
-            if (data.status) {
+            if (data.error == 0) {
                 var uid = data.data[0].id;
 
                 window['displayName_' + uid] = function(names1) {
@@ -409,7 +409,7 @@ bind("#frm-searchus", "submit", function(e) {
         }
         var mid = data.mid;
         var request = new XMLHttpRequest();
-        request.open('GET', '//api.fuckbilibili.com/uidhash.php?uid=' + mid, true);
+        request.open('GET', apiBase+'userid/' + mid, true);
 
         request.onload = function() {
             enable("searchUser");
@@ -417,7 +417,7 @@ bind("#frm-searchus", "submit", function(e) {
             if (request.status >= 200 && request.status < 400) {
                 show('step2.3');
                 var data2 = JSON.parse(request.responseText);
-                if (data2.status) {
+                if (data2.error == 0) {
                     var crc = data2.data;
                     for (var i = 0; i < commentElements2.length; i++) {
                         var n = commentElements2[i].getAttribute('p').split(',')[6];
