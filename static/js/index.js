@@ -92,7 +92,8 @@ bind("#frm-vurl", "submit", function(e) {
 
 function getComment(cid) {
   var request = new XMLHttpRequest();
-  request.open('GET', 'https://comment.bilibili.com/' + cid + '.xml', true);
+  request.open('GET', 'https://bilibili.zscself.com/comment/' + cid + '.xml', true);
+  // request.open('GET', 'https://comment.bilibili.com/' + cid + '.xml', true);
 
     show('loader');
     disable("getComment");
@@ -107,14 +108,14 @@ function getComment(cid) {
             show('step2');
         } else {
             enable("getComment");
-            $("#vurl").value = "读取弹幕失败";
+            $("#vurl").value = "Comment1 onload 读取弹幕失败";
         }
     };
 
     request.onerror = function() {
         enable("getComment");
         hide('loader');
-        $("#vurl").value = "读取弹幕失败";
+        $("#vurl").value = "Comment1 error 读取弹幕失败";
     };
 
     request.send();
@@ -300,7 +301,8 @@ function getUser(user) {
 
 function getComment2(cid) {
   var request = new XMLHttpRequest();
-  request.open('GET', 'https://comment.bilibili.com/' + cid + '.xml', true);
+  request.open('GET', 'https://bilibili.zscself.com/comment/' + cid + '.xml', true);
+  // request.open('GET', 'https://comment.bilibili.com/' + cid + '.xml', true);
 
   show('loader2');
   disable("getComment2");
@@ -315,28 +317,14 @@ function getComment2(cid) {
       show('step2.2');
     } else {
       enable("getComment2");
-      $("#vurl1").value = "读取弹幕失败";
+      $("#vurl1").value = "comment2 onload 读取弹幕失败";
     }
   };
-
-    request.onload = function() {
-        hide('loader2');
-        if (request.status >= 200 && request.status < 400) {
-            disable('vurl2');
-            var oParser = new DOMParser();
-            var oDOM = oParser.parseFromString(request.responseText, "text/xml");
-            window.commentElements2 = oDOM.getElementsByTagName("d");
-            show('step2.2');
-        } else {
-            enable("getComment2");
-            $("#vurl1").value = "读取弹幕失败";
-        }
-    };
 
     request.onerror = function() {
         enable("getComment2");
         hide('loader2');
-        $("#vurl1").value = "读取弹幕失败";
+        $("#vurl1").value = "comment2 onerror 读取弹幕失败";
     };
 
     request.send();
